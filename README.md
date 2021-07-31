@@ -15,3 +15,6 @@ Use this command for single file
 
 Use this command for all files tests
 - ./vendor/bin/phpunit
+
+## How to run
+A parsers directory created inside app which has model template file, parser interface, and model parser class to generate a model entity class. It can be tested through ``` ./vendor/bin/phpunit``` command and generate the path and file inside the app folder.
