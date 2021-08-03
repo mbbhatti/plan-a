@@ -11,9 +11,9 @@ class ModelParser implements ParserInterface
      */
     public function getTemplate(): string
     {
-        $path = __DIR__ . "/template.php";
-        if (file_exists($path)) {
-            $content = file_get_contents($path);
+        $templateFile = __DIR__ . "/template.php";
+        if (file_exists($templateFile)) {
+            $content = file_get_contents($templateFile);
         } else {
             $content = "File not found!";
         }
@@ -37,7 +37,7 @@ class ModelParser implements ParserInterface
                     $path = preg_replace('/[^a-zA-Z0-9\']/', ' ', $data);
                     $path = ucwords($path);
                     $path = str_replace(' ', '', $path);
-                    $namespace .= '/'. $path;
+                    $namespace .= '/' . $path;
                 }
                 $response['namespace'] = str_replace('/', '\\', $namespace);
             } elseif ($key === 'name') {
@@ -82,7 +82,7 @@ class ModelParser implements ParserInterface
         $content = $this->getTemplate();
         foreach ($collection as $placeholder_key => $placeholder_value) {
             $content = str_replace('{' . $placeholder_key . '}', $placeholder_value, $content);
-            $content = preg_replace('/\{\}/is','',$content);
+            $content = preg_replace('/\{\}/is','', $content);
         }
 
         // Generate file
